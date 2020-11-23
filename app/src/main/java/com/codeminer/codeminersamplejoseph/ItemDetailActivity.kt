@@ -46,7 +46,6 @@ class ItemDetailActivity : AppCompatActivity() {
                             intent.getStringExtra(ItemDetailFragment.ARG_ITEM_ID))
                 }
             }
-
             supportFragmentManager.beginTransaction()
                     .add(R.id.item_detail_container, fragment)
                     .commit()
