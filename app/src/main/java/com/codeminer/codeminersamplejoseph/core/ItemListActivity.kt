@@ -113,7 +113,6 @@ class ItemListActivity : AppCompatActivity() {
                     holder.image.setImageResource(R.drawable.empty_view)
                 }
             }
-
             with(holder.itemView) {
                 tag = item
                 setOnClickListener(onClickListener)
