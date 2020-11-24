@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">CodeminerSampleJoseph</string>
-    <string name="title_item_detail">Detail</string>
+    <string name="title_item_detail">Star Wars Films App</string>
     <string name="logo">Logo</string>
     <string name="title">Title</string>
     <string name="secondary_text">Episode</string>
     <string name="supporting_text">Episode</string>
+    <string name="favorite_icon">favorite_icon</string>
+    <string name="favorite">favorite_val</string>
 </resources>

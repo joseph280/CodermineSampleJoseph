@@ -1,11 +1,14 @@
 package com.codeminer.codeminersamplejoseph.core
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.codeminer.codeminersamplejoseph.R
 
 /**
@@ -21,29 +24,22 @@ class ItemDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item_detail)
         setSupportActionBar(findViewById(R.id.detail_toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Codermine is awesome!", Snackbar.LENGTH_LONG)
+        findViewById<FloatingActionButton>(R.id.fab_detail).setOnClickListener { view ->
+
+            Snackbar.make(view, "Favorite film saved!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+            findViewById<FloatingActionButton>(R.id.fab_detail).setImageResource(R.drawable.heart_on)
+
+            val sharedPref = getSharedPreferences("USER_PREF",Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.putInt(getString(R.string.favorite), ItemListActivity.selected_movie?.episode_id!!)
+            editor.apply()
+            Log.e("FAV", "The write "+ItemListActivity.selected_movie?.episode_id.toString())
+
         }
-
-
         // Show the Up button in the action bar.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
-
-        // savedInstanceState is non-null when there is fragment state
-        // saved from previous configurations of this activity
-        // (e.g. when rotating the screen from portrait to landscape).
-        // In this case, the fragment will automatically be re-added
-        // to its container so we don"t need to manually add it.
-        // For more information, see the Fragments API guide at:
-        //
-        // http://developer.android.com/guide/components/fragments.html
-        //
         if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
             val fragment = ItemDetailFragment()
                 .apply {
                 arguments = Bundle().apply {
@@ -55,6 +51,17 @@ class ItemDetailActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                     .add(R.id.item_detail_container, fragment)
                     .commit()
+        }
+        ItemListActivity.selected_image?.let { it1 ->
+            findViewById<CoordinatorLayout>(R.id.full_layout).setBackgroundResource(
+                it1
+            )
+        }
+        this.title = ItemListActivity.selected_movie?.title;
+        val sharedPref = getSharedPreferences("USER_PREF",Context.MODE_PRIVATE)
+        val fav_film = sharedPref.getInt(getString(R.string.favorite), 0)
+        if (fav_film == ItemListActivity.selected_movie?.episode_id){
+            findViewById<FloatingActionButton>(R.id.fab_detail).setImageResource(R.drawable.heart_on)
         }
     }
 
