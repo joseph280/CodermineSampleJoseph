@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".ItemListActivity">
+    tools:context=".core.ItemListActivity">
 
     <!--
     This layout is a two-pane layout for the Items master/detail flow.
@@ -25,8 +25,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.codeminer.codeminersamplejoseph.ItemListActivity"
-        tools:listitem="@layout/item_list_content" />
+        tools:context="com.codeminer.codeminersamplejoseph.core.ItemListActivity"
+        tools:listitem="@layout/recyclerview_adapter_layout" />
 
     <FrameLayout
         android:id="@+id/item_detail_container"

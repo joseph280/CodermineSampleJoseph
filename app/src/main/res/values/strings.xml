@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CodeminerSampleJoseph</string>
-    <string name="title_item_detail">Item Detail</string>
+    <string name="title_item_detail">Detail</string>
+    <string name="logo">Logo</string>
+    <string name="title">Title</string>
+    <string name="secondary_text">Episode</string>
+    <string name="supporting_text">Episode</string>
 </resources>
